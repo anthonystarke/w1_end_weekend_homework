@@ -26,7 +26,6 @@ def pets_by_breed(pet_shop, breed_name)
   breed_count = []
   for breed in pet_shop[:pets]
     breed_count << breed[:breed] if breed[:breed] == breed_name
-    # breed_count += 1
   end
   return breed_count
 end
@@ -77,11 +76,9 @@ end
 
 def sell_pet_to_customer(pet_shop,pet,customer)
 
-  if pet == nil
-    return
-  end
+  return if pet == nil
 
-  if customer_can_afford_pet(customer,pet) == true
+  if customer_can_afford_pet(customer,pet)
     remove_pet_by_name(pet_shop,pet)
     remove_customer_cash(customer,pet[:price])
     add_or_remove_cash(pet_shop,pet[:price])
